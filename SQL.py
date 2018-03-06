@@ -3,10 +3,10 @@
 import mysql.connector as mysql
 
 mySQLConfig = {
-    "host": "137.59.148.97",
-    "user": 'a98ki3bb_admin',
-    'password': '1233211235',
-    'database': 'a98ki3bb_wxApi',
+    "host": "",
+    "user": '',
+    'password': '',
+    'database': '',
     'charset': 'utf8'
 }
 

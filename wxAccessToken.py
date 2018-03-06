@@ -39,7 +39,9 @@ class AT:
 
 
     def getAT(self):
-        jsonText = requests.get("https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx8f490f350bd104b2&secret=c3f85bebb144636b26451ffdd97c40eb",verify=False).content.decode("utf-8")
+        appid = "********"
+        secret = "*********"
+        jsonText = requests.get("https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid={appid}&secret={secret}".format(appid=appid,secret=secret),verify=False).content.decode("utf-8")
         jsonData = json.loads(jsonText)
         access_token = jsonData['access_token']
         # self.getNextTime()

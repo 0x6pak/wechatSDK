@@ -9,24 +9,6 @@ from wxTools import wxLog
 from lxml import etree
 import wxMsg
 
-
-# str_xml ='''<xml><ToUserName><![CDATA[gh_4c7a9eba6b5b]]></ToUserName>\n<FromUserName><![CDATA[oAg-CwNa-qzDesXBwGPcJ-4Jb9kQ]]></FromUserName>\n<CreateTime>1519465400</CreateTime>\n<MsgType><![CDATA[text]]></MsgType>\n<Content><![CDATA[33]]></Content>\n<MsgId>6526054200822009885</MsgId>\n</xml>'''
-#
-# xml = etree.fromstring(str_xml)
-
-
-# soup=soup.body
-# soup = soup.routes
-# list = []
-#
-# for child in soup.children:#遍历子节点，并存在List中，用来排序
-#
-#     list.append(child)
-#     cnt = cnt+1
-#     print(cnt)
-#
-# print(child)
-
 urls = (
     '/', 'index'
 )
@@ -72,6 +54,11 @@ class index:
             PicUrl = xml.find("PicUrl").text
             text = wxMsg.imageMsg(ToUserName,FromUserName,PicUrl)
 
+        if msgType == "event":
+            #事件
+            Event = xml.find("Event").text
+            text = wxMsg.subscribeEvent(ToUserName,FromUserName,Event)
+
 
         # printRed()
 
@@ -92,7 +79,7 @@ def token(data):
         return ""
 
 
-    token = '123456'
+    token = '******' #token
     list = [token, timestamp, nonce]
     list.sort()
     text = list[0] + list[1] + list[2]
