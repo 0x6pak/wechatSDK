@@ -9,3 +9,7 @@ mysql
 lxml
 web.py
 requests
+
+
+appid和secret在wxAccessToken.py里更改
+SQL信息在SQL.py里更改
