@@ -15,34 +15,42 @@ def textMsg(ToUserName,FromUserName,Content):
     return xmlText
 
 def imageMsg(ToUserName,FromUserName,PicUrl):
-    return "Success"
+    return xmlMsg(ToUserName,FromUserName,"This is title","This is description",PicUrl,"http://baidu.com")
 
 
 def xmlMsg(ToUserName,FromUserName,Title,Description,PicUrl,Url):
     xmlText = '''
-    <xml>
-        <ToUserName>< ![CDATA[{ToUserName}] ]>
-        </ToUserName>
-        <FromUserName>< ![CDATA[{FromUserName}] ]>
-        </FromUserName>
-        <CreateTime>{CreateTime}</CreateTime>
-        <MsgType>< ![CDATA[news] ]>
-        </MsgType>
-        <ArticleCount>1</ArticleCount>
-        <Articles>
-            <item>
-                <Title>< ![CDATA[Title] ]>
-                </Title>
-                <Description>< ![CDATA[{Description}] ]>
-                </Description>
-                <PicUrl>< ![CDATA[{PicUrl] ]>
-                </PicUrl>
-                <Url>< ![CDATA[{Url}] ]>
-                </Url>
-            </item>
-        </Articles>
-    </xml>
-    '''.format(ToUserName=FromUserName,FromUserName=ToUserName,CreateTime=int(time.time()),Description=Description,PicUrl=PicUrl,Url=Url)
+<xml>
+    <ToUserName>
+        <![CDATA[{ToUserName}]]>
+    </ToUserName>
+    <FromUserName>
+        <![CDATA[{FromUserName}]]>
+    </FromUserName>
+    <CreateTime>{CreateTime}</CreateTime>
+    <MsgType>
+        <![CDATA[news]]>
+    </MsgType>
+    <ArticleCount>1</ArticleCount>
+    <Articles>
+        <item>
+            <Title>
+                <![CDATA[{Title}]]>
+            </Title>
+            <Description>
+                <![CDATA[{Description}]]>
+            </Description>
+            <PicUrl>
+                <![CDATA[{PicUrl}]]>
+            </PicUrl>
+            <Url>
+                <![CDATA[{Url}]]>
+            </Url>
+        </item>
+    </Articles>
+</xml>
+    '''.format(ToUserName=FromUserName,FromUserName=ToUserName,CreateTime=int(time.time()),Title=Title,Description=Description,PicUrl=PicUrl,Url=Url)
+    print(xmlText)
     return xmlText
 
 
